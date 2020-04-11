@@ -1,1 +1,8 @@
-<p>eventos works!</p>
+<full-calendar defaultView="dayGridMonth" 
+    [locales]="locales"
+    locale="pt-br"
+    [plugins]="calendarPlugins"
+    [events]="[
+    { title: 'event 1', date: '2020-04-01' },
+    { title: 'event 2', date: '2020-04-02' }
+  ]"></full-calendar>

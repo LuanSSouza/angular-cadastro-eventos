@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FullCalendarModule // for FullCalendar!
   ],
   providers: [],
   bootstrap: [AppComponent]
