@@ -6,12 +6,21 @@ import { RemoverEventoComponent } from './remover-evento/remover-evento.componen
 import { ListarEventoComponent } from './listar-evento/listar-evento.component';
 import { CalendarioEventoComponent } from './calendario-evento/calendario-evento.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
+import { EventosRoutingModule } from './eventos-routing.module';
+import { EventosComponent } from './eventos/eventos.component';
 
 @NgModule({
-  declarations: [AdicionarEventoComponent, EditarEventoComponent, RemoverEventoComponent, ListarEventoComponent, CalendarioEventoComponent],
+  declarations: [
+    AdicionarEventoComponent, 
+    EditarEventoComponent, 
+    RemoverEventoComponent, 
+    ListarEventoComponent, 
+    CalendarioEventoComponent, EventosComponent
+  ],
   imports: [
     CommonModule,
-    FullCalendarModule, // for FullCalendar!
+    FullCalendarModule, // for FullCalendar!,
+    EventosRoutingModule
   ]
 })
 export class EventosModule { }

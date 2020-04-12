@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventosComponent } from './eventos/eventos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EventosModule } from './eventos/eventos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    EventosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
