@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 // Material Modules
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 // FullCalendar Modules
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { MatCardModule } from '@angular/material/card';
 
 // Application Modules
 import { EventosRoutingModule } from './eventos-routing.module';
@@ -25,13 +33,21 @@ import { EventosComponent } from './eventos/eventos.component';
     EditarEventoComponent, 
     RemoverEventoComponent, 
     ListarEventoComponent, 
-    CalendarioEventoComponent, EventosComponent
+    CalendarioEventoComponent, 
+    EventosComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FullCalendarModule,
+    FlexLayoutModule,
     MatTableModule,
+    MatTabsModule,
+    MatInputModule,
     MatCardModule,
+    MatButtonModule,
+    MatDatepickerModule, 
+    MatNativeDateModule,
     EventosRoutingModule
   ]
 })
