@@ -14,6 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+// Services Modules
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
