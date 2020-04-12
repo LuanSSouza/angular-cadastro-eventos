@@ -11,6 +11,8 @@ import { MaterialModule } from './material/material.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
