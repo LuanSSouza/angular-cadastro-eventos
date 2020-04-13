@@ -5,16 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Application Modules
 import { AppRoutingModule } from './app-routing.module';
 import { EventosModule } from './eventos/eventos.module';
-import { MaterialModule } from './material/material.module';
 
 // Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 // Services Modules
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -25,11 +23,10 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    SharedModule,
     EventosModule
   ],
   providers: [],
