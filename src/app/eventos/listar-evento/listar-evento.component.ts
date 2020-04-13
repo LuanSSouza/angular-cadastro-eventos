@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { EventosService } from 'src/services/eventos/eventos.service';
 
 @Component({
   selector: 'app-listar-evento',
@@ -8,15 +9,13 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListarEventoComponent implements OnInit {
 
-  displayedColumns: string[] = ['codigo', 'descricao', 'inicio', 'fim'];
-  dataSource = new MatTableDataSource<any>(); 
-  constructor() { }
+  displayedColumns: string[] = ['codigo', 'descricao', 'inicio', 'termino'];
+  dataSource = new MatTableDataSource<any>();
 
-  ngOnInit(): void {
-    this.dataSource.data = [
-      { codigo: 1, descricao: 'Evento 1', inicio: '2020-04-11', fim: '2020-04-11' },
-      { codigo: 2, descricao: 'Evento 2', inicio: '2020-04-11', fim: '2020-04-11' }
-    ];  
+  constructor(private eventosService: EventosService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.dataSource.data = await this.eventosService.getEventos();  
   }
 
   

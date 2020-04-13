@@ -1,25 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventosService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private authService: AuthService, private http: HttpClient) { }
 
-  public getEventos = () => this.http.get(`${environment.apicalendario}/eventos`);
+  public getEventos = () => this.http.get<Array<any>>(`${environment.apicalendario}/evento`, this.generateHeaders()).toPromise();
 
-  public deleteEvento = (id: number) => this.http.delete(`${environment.apicalendario}/eventos/${id}`);
+  public deleteEvento = (id: number) => this.http.delete(`${environment.apicalendario}/evento/${id}`);
 
   public postEvento = (evento: any) =>  {
-    return this.http.post(`${environment.apicalendario}/eventos`, evento, this.generateHeaders());
+    return this.http.post(`${environment.apicalendario}/evento`, evento, this.generateHeaders());
   }
 
   private generateHeaders = () => {
     return {
-      headers: new HttpHeaders({'Content-Type': 'application/json'})
+      headers: new HttpHeaders(
+      { 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.authService.getToken()}`} )
     }
   }
 }

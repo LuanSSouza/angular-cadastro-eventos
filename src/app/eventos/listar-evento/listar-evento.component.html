@@ -1,7 +1,7 @@
 <div fxLayout fxLayout.lt-md="column wrap" fxLayoutAlign="center center" fxLayoutGap.gt-sm="250px"
     fxLayoutGap.lt.md="20px">
     <mat-form-field>
-        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtrar">
     </mat-form-field>
     <div>
         <button mat-button routerLink="/eventos/adicionar">Adicionar</button>
@@ -25,9 +25,9 @@
         <td mat-cell *matCellDef="let element"> {{element.inicio}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="fim">
-        <th mat-header-cell *matHeaderCellDef> Fim </th>
-        <td mat-cell *matCellDef="let element"> {{element.fim}} </td>
+    <ng-container matColumnDef="termino">
+        <th mat-header-cell *matHeaderCellDef> Término </th>
+        <td mat-cell *matCellDef="let element"> {{element.termino}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

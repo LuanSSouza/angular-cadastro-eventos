@@ -17,6 +17,8 @@ import { RemoverEventoComponent } from './remover-evento/remover-evento.componen
 import { ListarEventoComponent } from './listar-evento/listar-evento.component';
 import { CalendarioEventoComponent } from './calendario-evento/calendario-evento.component';
 import { EventosComponent } from './eventos/eventos.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,13 +27,15 @@ import { EventosComponent } from './eventos/eventos.component';
     RemoverEventoComponent, 
     ListarEventoComponent, 
     CalendarioEventoComponent, 
-    EventosComponent
+    EventosComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FullCalendarModule,
     FlexLayoutModule,
+    HttpClientModule,
     MaterialModule,
     EventosRoutingModule
   ]

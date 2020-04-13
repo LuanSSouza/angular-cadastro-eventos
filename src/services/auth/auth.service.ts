@@ -25,6 +25,7 @@ export class AuthService {
 
   public isLogged = () => this.cookieService.check('token');
   
+  public getToken = () => this.cookieService.get('token');
 
   private generateHeaders = () => {
     return {

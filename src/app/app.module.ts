@@ -9,7 +9,6 @@ import { MaterialModule } from './material/material.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     LoginComponent,
   ],
   imports: [
