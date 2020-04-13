@@ -24,7 +24,7 @@ export class ListarEventoComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  deletarEvento(evento): void {
+  deletarEvento = async (evento) =>{
     const message = evento.descricao;
 
     const dialogData = new ConfirmDialogModel("Você realmente deseja remover este evento?", message);
@@ -34,8 +34,10 @@ export class ListarEventoComponent implements OnInit {
       data: dialogData
     });
 
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      console.log(dialogResult);
-    });
+    let excluir = await dialogRef.afterClosed().toPromise();
+    if (excluir) {
+      this.eventosService.deleteEvento(evento.codigo);
+      this.dataSource.data = await this.eventosService.getEventos();
+    }
   }
 }
