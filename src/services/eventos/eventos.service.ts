@@ -15,7 +15,7 @@ export class EventosService {
   public deleteEvento = (id: number) => this.http.delete(`${environment.apicalendario}/evento/${id}`);
 
   public postEvento = (evento: any) =>  {
-    return this.http.post(`${environment.apicalendario}/evento`, evento, this.generateHeaders());
+    return this.http.post(`${environment.apicalendario}/evento`, evento, this.generateHeaders()).toPromise();
   }
 
   private generateHeaders = () => {

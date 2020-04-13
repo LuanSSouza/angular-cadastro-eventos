@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { EventosService } from 'src/services/eventos/eventos.service';
 
 @Component({
   selector: 'app-adicionar-evento',
@@ -11,16 +12,14 @@ export class AdicionarEventoComponent implements OnInit {
 
   public adicionarForm: FormGroup;
 
-  constructor(private location: Location) { }
+  constructor(private eventosService: EventosService, private location: Location) { }
 
   ngOnInit(): void {
     this.adicionarForm = new FormGroup({
       codigo: new FormControl('', [Validators.required, Validators.maxLength(9)]),
       descricao: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      dataInicio: new FormControl(new Date()),
-      horaInicio: new FormControl('', [Validators.required, Validators.maxLength(5)]),
-      dataTermino: new FormControl(new Date()),
-      horaTermino: new FormControl('', [Validators.required, Validators.maxLength(5)]),
+      inicio: new FormControl('', [Validators.required]),
+      termino: new FormControl('', [Validators.required])
     });
   }
 
@@ -38,7 +37,15 @@ export class AdicionarEventoComponent implements OnInit {
     }
   }
  
-  private executeAdicionarCreation = (adicionarFormValue) => {
+  private executeAdicionarCreation = async (form) => {
+    let evento = { 
+      codigo: form.codigo,
+      descricao: form.descricao,
+      inicio: form.inicio,
+      termino: form.termino
+    }
+    
+    let res = await this.eventosService.postEvento(evento);
   }
  
 

@@ -20,32 +20,32 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field>
+                <!-- <mat-form-field>
                     <input matInput [matDatepicker]="pickerInicio" placeholder="Escolha a data data de Início"
                         formControlName="dataInicio" id="dataInicio" readonly (click)="pickerInicio.open()">
                     <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
                     <mat-datepicker #pickerInicio></mat-datepicker>
-                </mat-form-field>
+                </mat-form-field> -->
 
                 <mat-form-field>
-                    <input matInput type="text" placeholder="Hora de início*" formControlName="horaInicio" id="horaInicio">
-                    <mat-error *ngIf="hasError('horaInicio', 'required')">A hora de início é obrigatória</mat-error>
-                    <mat-error *ngIf="hasError('horaInicio', 'maxlength')">A hora de início deve ter no máximo 100 dígitos
-                    </mat-error>
+                    <input matInput type="text" placeholder="Início*" formControlName="inicio" id="inicio">
+                    <mat-error *ngIf="hasError('inicio', 'required')">O início é obrigatório</mat-error>
+                    <!-- <mat-error *ngIf="hasError('inicio', 'maxlength')">O início deve ter no máximo 5 dígitos
+                    </mat-error> -->
                 </mat-form-field>
 
-                <mat-form-field>
+                <!-- <mat-form-field>
                     <input matInput [matDatepicker]="pickerTermino" placeholder="Escolha a data de termino"
                         formControlName="dataTermino" id="dataTermino" readonly (click)="pickerTermino.open()">
                     <mat-datepicker-toggle matSuffix [for]="pickerTermino"></mat-datepicker-toggle>
                     <mat-datepicker #pickerTermino></mat-datepicker>
-                </mat-form-field>
+                </mat-form-field> -->
 
                 <mat-form-field>
-                    <input matInput type="text" placeholder="Hora de término*" formControlName="horaTermino" id="horaTermino">
-                    <mat-error *ngIf="hasError('horaTermino', 'required')">A hora de término é obrigatória</mat-error>
-                    <mat-error *ngIf="hasError('horaTermino', 'maxlength')">A hora de término início deve ter no máximo 100 dígitos
-                    </mat-error>
+                    <input matInput type="text" placeholder="Término*" formControlName="termino" id="termino">
+                    <mat-error *ngIf="hasError('termino', 'required')">O término é obrigatório</mat-error>
+                    <!-- <mat-error *ngIf="hasError('termino', 'maxlength')">O término início deve ter no máximo 5 dígitos
+                    </mat-error> -->
                 </mat-form-field>
             </mat-card-content>
             <mat-card-actions align="center">
