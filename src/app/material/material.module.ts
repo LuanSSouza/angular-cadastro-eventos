@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon'; 
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 
@@ -27,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDatepickerModule, 
     MatNativeDateModule,
     MatIconModule,
+    MatDialogModule,
   ],
   exports: [
     MatToolbarModule,
@@ -38,6 +41,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatDatepickerModule, 
     MatNativeDateModule,
     MatIconModule,
+    MatDialogModule,
   ]
 })
 export class MaterialModule { }
