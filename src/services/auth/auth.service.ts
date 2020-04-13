@@ -12,11 +12,19 @@ export class AuthService {
   constructor(private cookieService: CookieService, private http: HttpClient, private router: Router) { }
 
   public login = async (user: any) => {
-    this.http.post<any>(`${environment.apicalendario}/authenticate`, user, this.generateHeaders()).subscribe(res => { 
-      this.cookieService.set( 'token', res.token );
-      this.router.navigate(['/eventos']);
-    });
+    let res: any = await this.http.post<any>(`${environment.apicalendario}/authenticate`, user, this.generateHeaders()).toPromise().catch(err => err );
+    if (res.status == 403) return "Usuário e/ou senha inválido(s)!";
+    this.cookieService.set('token', res.token);
+    this.router.navigate(['/eventos']);
   }
+
+  public logout = () => {
+    this.cookieService.delete('token');
+    this.router.navigate(['/login']);
+  }
+
+  public isLogged = () => this.cookieService.check('token');
+  
 
   private generateHeaders = () => {
     return {

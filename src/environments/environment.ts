@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apicalendario: "http://localhost:8080/"
+  apicalendario: "http://localhost:8080"
 };
 
 /*
