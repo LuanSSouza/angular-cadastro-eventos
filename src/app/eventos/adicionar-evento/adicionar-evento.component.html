@@ -21,9 +21,9 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Escolha a data data de Início"
+                    <input matInput [matDatepicker]="pickerInicio" placeholder="Escolha a data data de Início"
                         formControlName="dataInicio" id="dataInicio" readonly (click)="picker.open()">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
 
@@ -35,9 +35,9 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Escolha a data de termino"
+                    <input matInput [matDatepicker]="pickerTermino" placeholder="Escolha a data de termino"
                         formControlName="dataTermino" id="dataTermino" readonly (click)="picker.open()">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker-toggle matSuffix [for]="pickerTermino"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
 
