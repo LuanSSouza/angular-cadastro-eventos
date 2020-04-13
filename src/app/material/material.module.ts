@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon'; 
 
 
 
@@ -25,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatDatepickerModule, 
     MatNativeDateModule,
+    MatIconModule,
   ],
   exports: [
     MatToolbarModule,
@@ -35,6 +37,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCardModule,
     MatDatepickerModule, 
     MatNativeDateModule,
+    MatIconModule,
   ]
 })
 export class MaterialModule { }

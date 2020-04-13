@@ -9,7 +9,7 @@ import { EventosService } from 'src/services/eventos/eventos.service';
 })
 export class ListarEventoComponent implements OnInit {
 
-  displayedColumns: string[] = ['codigo', 'descricao', 'inicio', 'termino'];
+  displayedColumns: string[] = ['codigo', 'descricao', 'inicio', 'termino', 'acoes'];
   dataSource = new MatTableDataSource<any>();
 
   constructor(private eventosService: EventosService) { }
