@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="navbar">
     <div>Calendário de Eventos</div>
-    <div>
+    <div *ngIf="isLogged">
         <button mat-button routerLink="/eventos">Eventos</button>
+        <button mat-button (click)="loggout()">Sair</button>
     </div>
 </mat-toolbar>
