@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: '', component: ListarEventoComponent },
       { path: 'adicionar', component: AdicionarEventoComponent },
       { path: 'calendario', component: CalendarioEventoComponent },
-      { path: 'editar', component: EditarEventoComponent },
+      { path: 'editar/:codigo', component: AdicionarEventoComponent },
       { path: 'remover', component: RemoverEventoComponent },
     ]
   }

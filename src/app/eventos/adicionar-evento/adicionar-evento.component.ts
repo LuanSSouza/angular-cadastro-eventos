@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventosService } from 'src/services/eventos/eventos.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-adicionar-evento',
@@ -12,7 +13,11 @@ export class AdicionarEventoComponent implements OnInit {
 
   public adicionarForm: FormGroup;
 
-  constructor(private eventosService: EventosService, private location: Location) { }
+  constructor(private eventosService: EventosService, private location: Location, private route: ActivatedRoute) {
+    this.route.params.subscribe( params => {
+      if (params["codigo"]) this.getEvento(params["codigo"]);
+    }); 
+  }
 
   ngOnInit(): void {
     this.adicionarForm = new FormGroup({
@@ -47,6 +52,15 @@ export class AdicionarEventoComponent implements OnInit {
     
     let res = await this.eventosService.postEvento(evento);
   }
- 
+  
+  private getEvento = async (codigo: number) => {
+    let evento:any = await this.eventosService.getEventosByCodigo(codigo);
+    this.adicionarForm.setValue({
+      codigo: evento.codigo,
+      descricao: evento.descricao,
+      inicio: evento.inicio,
+      termino: evento.termino,
+    });
+  }
 
 }

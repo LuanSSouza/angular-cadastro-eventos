@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { EventosService } from 'src/services/eventos/eventos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/shared/dialog/confirm-dialog/confirm-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-evento',
@@ -14,14 +15,20 @@ export class ListarEventoComponent implements OnInit {
   displayedColumns: string[] = ['codigo', 'descricao', 'inicio', 'termino', 'acoes'];
   dataSource = new MatTableDataSource<any>();
 
-  constructor(private eventosService: EventosService, public dialog: MatDialog) { }
+  constructor(private eventosService: EventosService, public dialog: MatDialog, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    this.dataSource.data = await this.eventosService.getEventos();  
+    let eventos = await this.eventosService.getEventos();  
+    eventos.sort( (a,b) => a.codigo - b.codigo);
+    this.dataSource.data = eventos;
   }
   
   doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  editarEvento = (evento) => {
+    this.router.navigate(['/eventos/editar', evento.codigo]);
   }
 
   deletarEvento = async (evento) =>{

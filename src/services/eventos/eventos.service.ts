@@ -14,6 +14,10 @@ export class EventosService {
     return this.http.get<Array<any>>(`${environment.apicalendario}/evento`, this.generateHeaders()).toPromise();
   }
 
+  public getEventosByCodigo = (codigo: number) => {
+    return this.http.get<Array<any>>(`${environment.apicalendario}/evento/${codigo}`, this.generateHeaders()).toPromise();
+  }
+
   public deleteEvento = (id: number) => {
     return this.http.delete(`${environment.apicalendario}/evento/${id}`, this.generateHeaders()).toPromise();
   }
