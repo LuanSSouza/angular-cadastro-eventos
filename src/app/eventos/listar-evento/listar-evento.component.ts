@@ -19,7 +19,7 @@ export class ListarEventoComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     let eventos = await this.eventosService.getEventos();  
-    eventos.sort( (a,b) => a.codigo - b.codigo);
+    eventos.sort( (a,b) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
     this.dataSource.data = eventos;
   }
   
