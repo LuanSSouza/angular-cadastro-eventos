@@ -31,7 +31,7 @@ export class ListaConvitesComponent implements OnInit {
   editarConvite = async (convite: Convite) => {
     const message = convite.keys.evento.descricao;
 
-    const dialogData = new ConfirmDialogModel("Você aceita o convite?", message);
+    const dialogData = new ConfirmDialogModel("Você participará do evento?", message);
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "600px",
