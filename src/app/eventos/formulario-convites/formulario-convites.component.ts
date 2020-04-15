@@ -28,7 +28,7 @@ export class FormularioConvitesComponent implements OnInit {
       evento: new FormControl('', [Validators.required]),
       usuario: new FormControl('', [Validators.required]),
     });
-    this.eventos = await this.eventosService.getEventos();
+    this.eventos = await this.eventosService.getUsuarioEventos();
     this.usuarios = await this.usuarioService.getAll();
   }
 

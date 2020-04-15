@@ -15,6 +15,10 @@ export class EventosService {
     return this.http.get<Evento[]>(`${environment.apicalendario}/evento`, this.generateHeaders()).toPromise();
   }
 
+  public getUsuarioEventos = () => {
+    return this.http.get<Evento[]>(`${environment.apicalendario}/evento/usuario`, this.generateHeaders()).toPromise();
+  }
+
   public getEventosByCodigo = (codigo: number) => {
     return this.http.get<Evento>(`${environment.apicalendario}/evento/${codigo}`, this.generateHeaders()).toPromise();
   }

@@ -20,7 +20,7 @@ export class ListarEventoComponent implements OnInit {
   constructor(private eventosService: EventosService, public dialog: MatDialog, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    let eventos:Evento[] = await this.eventosService.getEventos();  
+    let eventos:Evento[] = await this.eventosService.getUsuarioEventos();  
     eventos.sort((a,b) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
     this.dataSource.data = eventos;
   }
