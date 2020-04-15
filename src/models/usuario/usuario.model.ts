@@ -1,6 +1,4 @@
-import { Evento } from '../evento/evento.model';
-
-export interface Usuario {
-    id: number;
-    login: string;
+export class Usuario {
+    public id: number;
+    public login: string;
 }

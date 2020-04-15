@@ -1,6 +1,6 @@
-export interface Evento {
-    codigo: number;
-    descricao: string;
-    inicio: string,
-    termino: string
+export class Evento {
+    public codigo: number;
+    public descricao: string;
+    public inicio: string;
+    public termino: string
 }

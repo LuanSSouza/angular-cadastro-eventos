@@ -7,10 +7,7 @@
             <mat-card-content>
                 <mat-form-field>
                     <!-- <mat-label>Descrição do evento*</mat-label> -->
-                    <input matInput type="text" placeholder="Código do evento*" formControlName="codigo" id="codigo">
-                    <mat-error *ngIf="hasError('codigo', 'required')">Código é obrigatório</mat-error>
-                    <mat-error *ngIf="hasError('codigo', 'maxlength')">O código deve ter no máximo 9 dígitos
-                    </mat-error>
+                    <input matInput type="text" placeholder="Código do evento*" [(ngModel)] = "evento.codigo" [ngModelOptions]="{standalone: true}" id="codigo" disabled>
                 </mat-form-field>
                 
                 <mat-form-field>

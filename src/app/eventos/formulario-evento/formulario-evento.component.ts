@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventosService } from 'src/services/eventos/eventos.service';
 import { ActivatedRoute } from '@angular/router';
+import { Evento } from 'src/models/evento/evento.model';
 
 @Component({
   selector: 'app-formulario-evento',
@@ -12,6 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class FormularioEventoComponent implements OnInit {
 
   public formularioForm: FormGroup;
+  public isEdit: boolean = false;
+  public evento: Evento = new Evento();
 
   constructor(private eventosService: EventosService, private location: Location, private route: ActivatedRoute) {
     this.route.params.subscribe( params => {
@@ -21,7 +24,6 @@ export class FormularioEventoComponent implements OnInit {
 
   ngOnInit(): void {
     this.formularioForm = new FormGroup({
-      codigo: new FormControl('', [Validators.required, Validators.maxLength(9)]),
       descricao: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       inicio: new FormControl('', [Validators.required]),
       termino: new FormControl('', [Validators.required])
@@ -43,24 +45,22 @@ export class FormularioEventoComponent implements OnInit {
   }
  
   private fillEvento = async (form) => {
-    let evento = { 
-      codigo: form.codigo,
-      descricao: form.descricao,
-      inicio: form.inicio,
-      termino: form.termino
-    }
-    
-    let res = await this.eventosService.postEvento(evento);
+    this.evento.descricao = form.descricao;
+    this.evento.inicio = form.inicio;
+    this.evento.termino = form.termino;
+
+    if (this.isEdit == true) await this.eventosService.putEvento(this.evento);
+    else await this.eventosService.postEvento(this.evento);
   }
   
   private getEvento = async (codigo: number) => {
-    let evento:any = await this.eventosService.getEventosByCodigo(codigo);
+    this.evento = await this.eventosService.getEventosByCodigo(codigo);
     this.formularioForm.setValue({
-      codigo: evento.codigo,
-      descricao: evento.descricao,
-      inicio: evento.inicio,
-      termino: evento.termino,
+      descricao: this.evento.descricao,
+      inicio: this.evento.inicio,
+      termino: this.evento.termino,
     });
+    this.isEdit = true;
   }
 
 }
