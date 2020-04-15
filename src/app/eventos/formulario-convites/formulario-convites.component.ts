@@ -23,13 +23,12 @@ export class FormularioConvitesComponent implements OnInit {
     private location: Location) { }
 
   async ngOnInit(): Promise<void> {
-    this.eventos = await this.eventosService.getEventos();
-    this.usuarios = await this.usuarioService.getAll();
-
     this.conviteForm = new FormGroup({
       evento: new FormControl('', [Validators.required]),
       usuario: new FormControl('', [Validators.required]),
     });
+    this.eventos = await this.eventosService.getEventos();
+    this.usuarios = await this.usuarioService.getAll();
   }
 
   public hasError = (controlName: string, errorName: string) =>{
@@ -48,8 +47,10 @@ export class FormularioConvitesComponent implements OnInit {
  
   private executeAdicionarCreation = (form) => {
     let convite: any = {
-      evento: form.evento,
-      usuario: form.usuario,
+      keys: { 
+        evento: form.evento,
+        usuario: form.usuario,
+      },
       status: { id: 1 }
     }
     this.conviteService.postConvite(convite);
