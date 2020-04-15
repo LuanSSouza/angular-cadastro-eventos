@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private cookieService: CookieService, private http: HttpClient, private router: Router) { }
 
   public login = async (user: any) => {
-    let res: any = await this.http.post<any>(`${environment.apicalendario}/authenticate`, user, this.generateHeaders()).toPromise().catch(err => err );
+    let res: any = await this.http.post<any>(`${environment.apicalendario}/usuario/autenticar`, user, this.generateHeaders()).toPromise().catch(err => err );
     if (res.status == 403) return "Usuário e/ou senha inválido(s)!";
     this.cookieService.set('token', res.token);
     this.router.navigate(['/eventos']);
