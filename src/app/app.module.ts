@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Services Modules
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
-import { ConvitesModule } from './eventos/convites/convites.module';
 
 
 @NgModule({

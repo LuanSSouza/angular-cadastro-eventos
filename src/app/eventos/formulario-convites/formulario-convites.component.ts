@@ -6,6 +6,7 @@ import { EventosService } from 'src/services/eventos/eventos.service';
 import { ConviteService } from 'src/services/convite/convite.service';
 import { Evento } from 'src/models/evento/evento.model';
 import { Usuario } from 'src/models/usuario/usuario.model';
+import { Convite } from 'src/models/convite/convite.model';
 
 @Component({
   selector: 'app-formulario-convites',
@@ -46,12 +47,12 @@ export class FormularioConvitesComponent implements OnInit {
   }
  
   private executeAdicionarCreation = (form) => {
-    let convite: any = {
+    let convite: Convite = {
       keys: { 
         evento: form.evento,
         usuario: form.usuario,
       },
-      status: { id: 1 }
+      status: { id: 1, status: "" }
     }
     this.conviteService.postConvite(convite);
   }

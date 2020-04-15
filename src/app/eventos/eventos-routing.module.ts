@@ -5,6 +5,7 @@ import { ListarEventoComponent } from './listar-evento/listar-evento.component';
 import { CalendarioEventoComponent } from './calendario-evento/calendario-evento.component';
 import { FormularioEventoComponent } from './formulario-evento/formulario-evento.component';
 import { FormularioConvitesComponent } from './formulario-convites/formulario-convites.component';
+import { ListaConvitesComponent } from './lista-convites/lista-convites.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'calendario', component: CalendarioEventoComponent },
       { path: 'editar/:codigo', component: FormularioEventoComponent },
       { path: 'adicionar-convite', component: FormularioConvitesComponent },
+      { path: 'lista-convites', component: ListaConvitesComponent },
     ]
   }
 ];

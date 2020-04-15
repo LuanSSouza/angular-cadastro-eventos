@@ -4,7 +4,7 @@
         <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtrar">
     </mat-form-field>
     <div>
-        <button mat-mini-fab aria-label="Adicionar" color="primary" routerLink="/eventos/adicionar">
+        <button mat-mini-fab aria-label="Adicionar" color="primary" routerLink="/eventos/adicionar-convite">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -14,31 +14,31 @@
 
     <ng-container matColumnDef="codigo">
         <th mat-header-cell *matHeaderCellDef> Código </th>
-        <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.keys.evento.codigo}} </td>
     </ng-container>
 
     <ng-container matColumnDef="descricao">
         <th mat-header-cell *matHeaderCellDef> Descrição </th>
-        <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.keys.evento.descricao}} </td>
     </ng-container>
 
     <ng-container matColumnDef="inicio">
         <th mat-header-cell *matHeaderCellDef> Início </th>
-        <td mat-cell *matCellDef="let element"> {{element.inicio | date: 'short' }} </td>
+        <td mat-cell *matCellDef="let element"> {{element.keys.evento.inicio | date: 'short' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="termino">
         <th mat-header-cell *matHeaderCellDef> Término </th>
-        <td mat-cell *matCellDef="let element"> {{element.termino | date: 'short' }} </td>
+        <td mat-cell *matCellDef="let element"> {{element.keys.evento.termino | date: 'short' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="acoes">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let element">
-            <button mat-icon-button aria-label="Editar" (click)="editarEvento(element)">
+            <button mat-icon-button aria-label="Editar" (click)="editarConvite(element)">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button aria-label="Remover" (click)="deletarEvento(element)">
+            <button mat-icon-button aria-label="Remover" (click)="deletarConvite(element)">
                 <mat-icon>delete</mat-icon>
             </button>
         </td>

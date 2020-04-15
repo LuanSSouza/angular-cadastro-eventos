@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormularioConvitesComponent } from './formulario-convites/formulario-convites.component';
+import { ListaConvitesComponent } from './lista-convites/lista-convites.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormularioConvitesComponent } from './formulario-convites/formulario-co
     CalendarioEventoComponent, 
     EventosComponent,
     HeaderComponent,
-    FormularioConvitesComponent
+    FormularioConvitesComponent,
+    ListaConvitesComponent
   ],
   imports: [
     CommonModule,
