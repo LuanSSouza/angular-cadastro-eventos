@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/services/auth/auth.service';
+import { UsuarioService } from 'src/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -27,6 +28,16 @@ export class LoginComponent implements OnInit {
   public submitLogin = (loginFormValue) => {
     if (this.loginForm.valid) {
       this.executeAdicionarCreation(loginFormValue);
+    }
+  }
+
+  public cadastrar = (loginFormValue) => {
+    if (this.loginForm.valid) {
+      let user: any = {
+        login: loginFormValue.username,
+        newPassword: loginFormValue.password
+      }
+      this.usuarioService.criarUsuario(user);
     }
   }
  
