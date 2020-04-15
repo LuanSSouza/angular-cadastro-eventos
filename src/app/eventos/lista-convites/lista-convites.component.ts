@@ -28,24 +28,25 @@ export class ListaConvitesComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  editarConvite = (convite) => {
-    this.router.navigate(['/convites/editar', convite.codigo]);
-  }
-
-  deletarConvite = async (convite: Convite) =>{
+  editarConvite = async (convite: Convite) => {
     const message = convite.keys.evento.descricao;
 
-    const dialogData = new ConfirmDialogModel("Você realmente deseja remover este convite?", message);
+    const dialogData = new ConfirmDialogModel("Você aceita o convite?", message);
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "600px",
       data: dialogData
     });
 
-    let excluir = await dialogRef.afterClosed().toPromise();
-    if (excluir) {
-      this.conviteService.deleteConvite(convite);
-      this.dataSource.data = await this.conviteService.getConvites();
+    let aceito = await dialogRef.afterClosed().toPromise();
+    if (aceito) {
+      convite.status = { id: 2, status: "Aceito" };
+      this.conviteService.putConvite(convite);
     }
+    else {
+      convite.status = { id: 3, status: "Recusado" };
+      this.conviteService.putConvite(convite);
+    }
+    this.dataSource.data = await this.conviteService.getConvites();
   }
 }
