@@ -1,1 +1,35 @@
-<p>formulario-convites works!</p>
+<div class="container">
+    <section fxLayout="row wrap" fxLayoutAlign="center center">
+        <mat-card fxFlex="500px" fxFlex.xs="100%">
+            <mat-card-title>Convite</mat-card-title>
+            <form [formGroup]="conviteForm" autocomplete="off" novalidate (ngSubmit)="submitLogin(conviteForm.value)"
+                fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+                <mat-card-content>
+                    <mat-form-field>
+                        <select formControlName="evento" id="evento" name="evento" class="size-xl">
+                            <option value="">Select</option>
+                            <option *ngFor="let evento of eventos" [ngValue]="evento">
+                                {{ evento.descricao }}
+                            </option>
+                        </select>
+                        <mat-error *ngIf="hasError('evento', 'required')">Evento é obrigatório</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <select formControlName="usuario" id="usuario" name="usuario" class="size-xl">
+                            <option value="">Select</option>
+                            <option *ngFor="let usuario of usuarios" [ngValue]="usuario">
+                                {{ usuario.login }}
+                            </option>
+                        </select>
+                        <mat-error *ngIf="hasError('usuario', 'required')">Usuário é obrigatório</mat-error>
+                    </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions align="center">
+                    <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+                    <button mat-raised-button color="primary" [disabled]="!conviteForm.valid">Salvar</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </section>
+</div>
