@@ -14,6 +14,10 @@ export class ConviteService {
     return this.http.get<any[]>(`${environment.apicalendario}/convite`, this.generateHeaders()).toPromise();
   }
 
+  public getConvitesEvento = (codigo) => {
+    return this.http.get<any[]>(`${environment.apicalendario}/convite/evento/${codigo}`, this.generateHeaders()).toPromise();
+  }
+
   public postConvite = (convite) =>  {
     return this.http.post(`${environment.apicalendario}/convite`, convite, this.generateHeaders()).toPromise();
   }

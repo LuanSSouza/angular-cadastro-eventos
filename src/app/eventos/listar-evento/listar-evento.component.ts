@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/shared/dialog/confirm-dialog/confirm-dialog.component';
 import { Router } from '@angular/router';
 import { Evento } from 'src/models/evento/evento.model';
+import { EventoDialogComponent } from 'src/app/shared/dialog/evento-dialog/evento-dialog.component';
 
 @Component({
   selector: 'app-listar-evento',
@@ -32,7 +33,14 @@ export class ListarEventoComponent implements OnInit {
     this.router.navigate(['/eventos/editar', evento.codigo]);
   }
 
-  deletarEvento = async (evento) =>{
+  visualizarEvento = (evento: Evento) => {
+    this.dialog.open(EventoDialogComponent, {
+      maxWidth: "600px",
+      data: evento
+    });
+  }
+
+  deletarEvento = async (evento: Evento) => {
     const message = evento.descricao;
 
     const dialogData = new ConfirmDialogModel("Você realmente deseja remover este evento?", message);

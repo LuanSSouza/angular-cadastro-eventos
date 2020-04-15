@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>
+    Evento
+</h1>
+
+<div mat-dialog-content>
+    <p><b>Descrição: </b> {{evento.descricao}}</p>
+    <p><b>Início: </b>{{evento.inicio | date: 'short' }}</p>
+    <p><b>Termino: </b>{{evento.termino | date: 'short' }}</p>
+    <mat-list *ngIf="convites.length > 0">
+        <div mat-subheader>Convites</div>
+        <mat-list-item *ngFor="let convite of convites">
+            <mat-icon mat-list-icon>email</mat-icon>
+            <div mat-line>{{ convite.keys.usuario.login }}</div>
+            <div mat-line>{{ convite.status.status }} </div>
+        </mat-list-item>
+    </mat-list>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Ok</button>
+</div>

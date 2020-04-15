@@ -9,11 +9,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { EventoDialogComponent } from './dialog/evento-dialog/evento-dialog.component';
 registerLocaleData(localePt);
 
 @NgModule({
   providers: [ { provide: LOCALE_ID, useValue: "pt-BR" } ],
-  declarations: [ConfirmDialogComponent, MessageDialogComponent],
+  declarations: [ConfirmDialogComponent, MessageDialogComponent, EventoDialogComponent],
   imports: [ 
     CommonModule,
     MaterialModule,
