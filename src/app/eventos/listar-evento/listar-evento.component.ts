@@ -4,6 +4,7 @@ import { EventosService } from 'src/services/eventos/eventos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/shared/dialog/confirm-dialog/confirm-dialog.component';
 import { Router } from '@angular/router';
+import { Evento } from 'src/models/evento/evento.model';
 
 @Component({
   selector: 'app-listar-evento',
@@ -18,8 +19,8 @@ export class ListarEventoComponent implements OnInit {
   constructor(private eventosService: EventosService, public dialog: MatDialog, private router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    let eventos = await this.eventosService.getEventos();  
-    eventos.sort( (a,b) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
+    let eventos:Evento[] = await this.eventosService.getEventos();  
+    eventos.sort((a,b) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
     this.dataSource.data = eventos;
   }
   
