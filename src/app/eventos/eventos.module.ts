@@ -16,6 +16,7 @@ import { EventosComponent } from './eventos/eventos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormularioConvitesComponent } from './formulario-convites/formulario-convites.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SharedModule } from '../shared/shared.module';
     ListarEventoComponent, 
     CalendarioEventoComponent, 
     EventosComponent,
-    HeaderComponent
+    HeaderComponent,
+    FormularioConvitesComponent
   ],
   imports: [
     CommonModule,
