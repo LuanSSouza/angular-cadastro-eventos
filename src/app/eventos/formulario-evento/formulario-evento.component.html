@@ -5,9 +5,9 @@
             (ngSubmit)="onSubmitEvento(formularioForm.value)" fxLayout="column wrap" fxLayoutAlign="center center"
             fxLayoutGap="10px">
             <mat-card-content>
-                <mat-form-field>
+                <mat-form-field *ngIf="isEdit">
                     <!-- <mat-label>Descrição do evento*</mat-label> -->
-                    <input matInput type="text" placeholder="Código do evento*" [(ngModel)] = "evento.codigo" [ngModelOptions]="{standalone: true}" id="codigo" disabled>
+                    <input matInput type="text" placeholder="Código do evento" [(ngModel)]="evento.codigo" [ngModelOptions]="{standalone: true}" id="codigo" disabled>
                 </mat-form-field>
                 
                 <mat-form-field>
