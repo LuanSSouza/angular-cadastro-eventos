@@ -24,12 +24,12 @@
 
     <ng-container matColumnDef="inicio">
         <th mat-header-cell *matHeaderCellDef> Início </th>
-        <td mat-cell *matCellDef="let element"> {{element.inicio | date: 'shortDate' }} </td>
+        <td mat-cell *matCellDef="let element"> {{element.inicio | date: 'short' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="termino">
         <th mat-header-cell *matHeaderCellDef> Término </th>
-        <td mat-cell *matCellDef="let element"> {{element.termino | date: 'shortDate' }} </td>
+        <td mat-cell *matCellDef="let element"> {{element.termino | date: 'short' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="acoes">
