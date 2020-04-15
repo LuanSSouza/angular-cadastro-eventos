@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EventosComponent } from './eventos/eventos.component';
 import { ListarEventoComponent } from './listar-evento/listar-evento.component';
-import { AdicionarEventoComponent } from './adicionar-evento/adicionar-evento.component';
 import { CalendarioEventoComponent } from './calendario-evento/calendario-evento.component';
-import { EditarEventoComponent } from './editar-evento/editar-evento.component';
-import { RemoverEventoComponent } from './remover-evento/remover-evento.component';
+import { FormularioEventoComponent } from './formulario-evento/formulario-evento.component';
 
 
 const routes: Routes = [
@@ -14,10 +12,9 @@ const routes: Routes = [
     component: EventosComponent, 
     children: [
       { path: '', component: ListarEventoComponent },
-      { path: 'adicionar', component: AdicionarEventoComponent },
+      { path: 'adicionar', component: FormularioEventoComponent },
       { path: 'calendario', component: CalendarioEventoComponent },
-      { path: 'editar/:codigo', component: AdicionarEventoComponent },
-      { path: 'remover', component: RemoverEventoComponent },
+      { path: 'editar/:codigo', component: FormularioEventoComponent },
     ]
   }
 ];

@@ -9,9 +9,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { EventosRoutingModule } from './eventos-routing.module';
 
 // Components
-import { AdicionarEventoComponent } from './adicionar-evento/adicionar-evento.component';
-import { EditarEventoComponent } from './editar-evento/editar-evento.component';
-import { RemoverEventoComponent } from './remover-evento/remover-evento.component';
+import { FormularioEventoComponent } from './formulario-evento/formulario-evento.component';
 import { ListarEventoComponent } from './listar-evento/listar-evento.component';
 import { CalendarioEventoComponent } from './calendario-evento/calendario-evento.component';
 import { EventosComponent } from './eventos/eventos.component';
@@ -21,9 +19,7 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    AdicionarEventoComponent, 
-    EditarEventoComponent, 
-    RemoverEventoComponent, 
+    FormularioEventoComponent,
     ListarEventoComponent, 
     CalendarioEventoComponent, 
     EventosComponent,

@@ -5,13 +5,13 @@ import { EventosService } from 'src/services/eventos/eventos.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-adicionar-evento',
-  templateUrl: './adicionar-evento.component.html',
-  styleUrls: ['./adicionar-evento.component.css']
+  selector: 'app-formulario-evento',
+  templateUrl: './formulario-evento.component.html',
+  styleUrls: ['./formulario-evento.component.css']
 })
-export class AdicionarEventoComponent implements OnInit {
+export class FormularioEventoComponent implements OnInit {
 
-  public adicionarForm: FormGroup;
+  public formularioForm: FormGroup;
 
   constructor(private eventosService: EventosService, private location: Location, private route: ActivatedRoute) {
     this.route.params.subscribe( params => {
@@ -20,7 +20,7 @@ export class AdicionarEventoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.adicionarForm = new FormGroup({
+    this.formularioForm = new FormGroup({
       codigo: new FormControl('', [Validators.required, Validators.maxLength(9)]),
       descricao: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       inicio: new FormControl('', [Validators.required]),
@@ -29,20 +29,20 @@ export class AdicionarEventoComponent implements OnInit {
   }
 
   public hasError = (controlName: string, errorName: string) =>{
-    return this.adicionarForm.controls[controlName].hasError(errorName);
+    return this.formularioForm.controls[controlName].hasError(errorName);
   }
 
   public onCancel = () => {
     this.location.back();
   }
   
-  public createAdicionar = (adicionarFormValue) => {
-    if (this.adicionarForm.valid) {
-      this.executeAdicionarCreation(adicionarFormValue);
+  public onSubmitEvento = (form) => {
+    if (this.formularioForm.valid) {
+      this.fillEvento(form);
     }
   }
  
-  private executeAdicionarCreation = async (form) => {
+  private fillEvento = async (form) => {
     let evento = { 
       codigo: form.codigo,
       descricao: form.descricao,
@@ -55,7 +55,7 @@ export class AdicionarEventoComponent implements OnInit {
   
   private getEvento = async (codigo: number) => {
     let evento:any = await this.eventosService.getEventosByCodigo(codigo);
-    this.adicionarForm.setValue({
+    this.formularioForm.setValue({
       codigo: evento.codigo,
       descricao: evento.descricao,
       inicio: evento.inicio,
