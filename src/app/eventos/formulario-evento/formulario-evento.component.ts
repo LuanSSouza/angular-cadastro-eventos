@@ -2,8 +2,10 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EventosService } from 'src/services/eventos/eventos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/models/evento/evento.model';
+import { MatDialog } from '@angular/material/dialog';
+import { MessageDialogComponent, MessageDialogModel } from 'src/app/shared/dialog/message-dialog/message-dialog.component';
 
 @Component({
   selector: 'app-formulario-evento',
@@ -16,7 +18,11 @@ export class FormularioEventoComponent implements OnInit {
   public isEdit: boolean = false;
   public evento: Evento = new Evento();
 
-  constructor(private eventosService: EventosService, private location: Location, private route: ActivatedRoute) {
+  constructor(private eventosService: EventosService, 
+    private location: Location, 
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private router: Router,) {
     this.route.params.subscribe( params => {
       if (params["codigo"]) this.getEvento(params["codigo"]);
     }); 
@@ -49,8 +55,20 @@ export class FormularioEventoComponent implements OnInit {
     this.evento.inicio = form.inicio;
     this.evento.termino = form.termino;
 
-    if (this.isEdit == true) await this.eventosService.putEvento(this.evento);
-    else await this.eventosService.postEvento(this.evento);
+    if (this.isEdit){
+      this.eventosService.putEvento(this.evento)
+        .then(() => {
+          this.openDialog('Sucesso!', 'Evento atualizado.');
+          this.router.navigate(['/eventos']);
+        }).catch(() => this.openDialog('Erro!', 'Algo deu errado.'))
+    }
+    else {
+      this.eventosService.postEvento(this.evento)
+        .then(() => {
+          this.openDialog('Sucesso!', 'Evento cadastrado.');
+          this.router.navigate(['/eventos']);
+        }).catch(() => this.openDialog('Erro!', 'Algo deu errado.'));
+    }
   }
   
   private getEvento = async (codigo: number) => {
@@ -63,4 +81,10 @@ export class FormularioEventoComponent implements OnInit {
     this.isEdit = true;
   }
 
+  openDialog(title: string, message: string) {
+    this.dialog.open(MessageDialogComponent, {
+      maxWidth: "600px",
+      data: new MessageDialogModel(title, message)
+    });
+  }
 }

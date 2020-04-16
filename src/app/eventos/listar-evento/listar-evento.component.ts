@@ -6,6 +6,7 @@ import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/shared/dialo
 import { Router } from '@angular/router';
 import { Evento } from 'src/models/evento/evento.model';
 import { EventoDialogComponent } from 'src/app/shared/dialog/evento-dialog/evento-dialog.component';
+import { MessageDialogComponent, MessageDialogModel } from 'src/app/shared/dialog/message-dialog/message-dialog.component';
 
 @Component({
   selector: 'app-listar-evento',
@@ -15,14 +16,20 @@ import { EventoDialogComponent } from 'src/app/shared/dialog/evento-dialog/event
 export class ListarEventoComponent implements OnInit {
 
   displayedColumns: string[] = ['codigo', 'descricao', 'inicio', 'termino', 'acoes'];
-  dataSource = new MatTableDataSource<any>();
+  dataSource = new MatTableDataSource<Evento>();
+  dados: boolean = true;
 
   constructor(private eventosService: EventosService, public dialog: MatDialog, private router: Router) { }
 
-  async ngOnInit(): Promise<void> {
-    let eventos:Evento[] = await this.eventosService.getUsuarioEventos();  
-    eventos.sort((a,b) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
-    this.dataSource.data = eventos;
+  ngOnInit(): void {
+    this.fillTable();
+  }
+
+  private fillTable = () => {
+    this.eventosService.getUsuarioEventos().then(eventos => {
+      eventos.sort((a,b) => new Date(a.inicio).getTime() - new Date(b.inicio).getTime());
+      this.dataSource.data = eventos;
+    }).catch(() => this.dados = false);
   }
   
   doFilter = (value: string) => {
@@ -52,8 +59,18 @@ export class ListarEventoComponent implements OnInit {
 
     let excluir = await dialogRef.afterClosed().toPromise();
     if (excluir) {
-      this.eventosService.deleteEvento(evento.codigo);
-      this.dataSource.data = await this.eventosService.getEventos();
+      this.eventosService.deleteEvento(evento.codigo)
+        .then(() => {
+          this.openDialog('Sucesso!', 'Evento excluído.');
+          this.fillTable();
+        }).catch(() => this.openDialog('Erro!', 'Algo deu errado.'));
     }
+  }
+
+  openDialog(title: string, message: string) {
+    this.dialog.open(MessageDialogComponent, {
+      maxWidth: "600px",
+      data: new MessageDialogModel(title, message)
+    });
   }
 }

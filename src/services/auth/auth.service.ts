@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -11,11 +11,13 @@ export class AuthService {
 
   constructor(private cookieService: CookieService, private http: HttpClient, private router: Router) { }
 
-  public login = async (user: any) => {
+  public login = async (user: any): Promise<boolean> => {
     let res: any = await this.http.post<any>(`${environment.apicalendario}/usuario/autenticar`, user, this.generateHeaders()).toPromise().catch(err => err );
-    if (res.status == 403) return "Usuário e/ou senha inválido(s)!";
-    this.cookieService.set('token', res.token);
-    this.router.navigate(['/eventos']);
+    if (res.token) {
+      this.cookieService.set('token', res.token);
+      return true;
+    }
+    return false;
   }
 
   public logout = () => {

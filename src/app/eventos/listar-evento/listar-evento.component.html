@@ -10,7 +10,12 @@
     </div>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div fxLayout fxLayout.lt-md="column wrap" fxLayoutAlign="center center" fxLayoutGap.gt-sm="250px"
+    fxLayoutGap.lt.md="20px" *ngIf="!dados">
+    <p>Nenhum evento encontrado.</p>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="dataSource.data.length > 0">
 
     <ng-container matColumnDef="codigo">
         <th mat-header-cell *matHeaderCellDef> Código </th>
